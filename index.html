@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Mapa do Maroto • Edição Heráldica</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Palco de Partículas de Magia Antiga -->
+    <div id="magic-spark-canvas"></div>
+
+    <!-- ESTADO 1: O PERGAMINHO LACRADO -->
+    <main id="view-locked" class="app-viewport active">
+        <div class="sealed-scroll">
+            <div class="crest-icon">🛡️</div>
+            <h1 class="main-heading">O Mapa do Maroto</h1>
+            <p class="flavor-line">Os senhores Aluado, Rabicho, Almofadinhas e Pontas apresentam este documento...</p>
+            
+            <div class="input-tray">
+                <input type="text" id="oath-field-input" placeholder="Proferir o juramento solene..." autocomplete="off">
+                <button id="trigger-unlock-btn" class="btn-action">Revelar Segredos</button>
+            </div>
+            <p id="error-console-msg" class="error-log"></p>
+        </div>
+    </main>
+
+    <!-- ESTADO 2: O MAPA REVELADO COM INTERFACE LATERAL -->
+    <main id="view-unlocked" class="app-viewport">
+        <!-- Painel de Controle Esquerdo (Estilo Livro Antigo) -->
+        <aside class="sidebar-panel">
+            <div class="sidebar-top-dock">
+                <div class="sidebar-branding">
+                    <h2>Hogwarts Marauders</h2>
+                    <p>Aluado, Rabicho, Almofadinhas e Pontas</p>
+                </div>
+                
+                <!-- Abas Organizadoras Clicáveis -->
+                <nav class="nav-menu-group">
+                    <button class="tab-trigger-btn active-tab-btn" data-target="section-news">O Profeta Diário</button>
+                    <button class="tab-trigger-btn" data-target="section-map">Localizador</button>
+                    <button class="tab-trigger-btn" data-target="section-tapestry">Casa dos Black</button>
+                </nav>
+            </div>
+
+            <div class="sidebar-bottom-dock">
+                <div class="search-wrapper">
+                    <input type="text" id="live-search-box" placeholder="Rastrear bruxo por nome...">
+                </div>
+                <button id="trigger-lock-btn" class="btn-dismiss">Malfeito Feito</button>
+            </div>
+        </aside>
+
+        <!-- Palco Principal de Exibição das Abas -->
+        <div class="main-workspace">
+            
+            <!-- ABA 1: O PROFETA DIÁRIO -->
+            <div id="section-news" class="section-view active-tab-content">
+                <div class="parchment-canvas-box journal-wrapper">
+                    <div class="journal-header">
+                        <p class="journal-meta">Edição Extraordinária • Ministério da Magia • Nº 3.941</p>
+                        <h1 class="journal-title">O Profeta Diário</h1>
+                        <div class="journal-divider"></div>
+                    </div>
+                    <div class="journal-layout">
+                        <article>
+                            <h3>Assinaturas de Magia Clandestina Alertam Aurores</h3>
+                            <p class="paragraph-spacing">Investigações conduzidas por oficiais do Ministério apontam para assinaturas de magia residual de ocultamento operando à noite nos limites do castelo.</p>
+                            <p>Zeladores insistem que rastros misteriosos de pegadas andam surgindo sozinhos sobre os tapetes. O Diretor Alvo Dumbledore recusou-se a comentar o caso, mantendo as defesas intocadas.</p>
+                        </article>
+                        <aside class="blueprint-frame">
+                            <div class="blueprint-sketch"></div>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ABA 2: LOCALIZADOR DE BRUXOS (6 QUADRANTES) -->
+            <div id="section-map" class="section-view">
+                <div class="blueprint-map-grid">
+                    
+                    <!-- SNAPE -->
+                    <div class="parchment-canvas-box blueprint-chamber" data-wizard="Severus Snape" data-id="1">
+                        <div class="grid-lines-overlay"></div>
+                        <div class="chamber-info">
+                            <h4>As Masmorras</h4>
+                            <p>Prof. Severus Snape</p>
+                            <div class="footprint-node path-alpha">👣<span>Snape</span></div>
+                        </div>
+                        <button class="btn-control btn-spy-chamber">👁️ Espiar (<span class="spy-count">0</span>)</button>
+                    </div>
+
+                    <!-- HARRY -->
+                    <div class="parchment-canvas-box blueprint-chamber" data-wizard="Harry Potter" data-id="2">
+                        <div class="grid-lines-overlay"></div>
+                        <div class="chamber-info">
+                            <h4>Salão Comunal</h4>
+                            <p>Harry Potter</p>
+                            <div class="footprint-node path-beta">👣<span>Harry P.</span></div>
+                        </div>
+                        <button class="btn-control btn-spy-chamber">👁️ Espiar (<span class="spy-count">0</span>)</button>
+                    </div>
+
+                    <!-- HERMIONE -->
+                    <div class="parchment-canvas-box blueprint-chamber" data-wizard="Hermione Granger" data-id="3">
+                        <div class="grid-lines-overlay"></div>
+                        <div class="chamber-info">
+                            <h4>A Biblioteca</h4>
+                            <p>Hermione Granger</p>
+                            <div class="footprint-node path-gamma">👣<span>Hermione</span></div>
+                        </div>
+                        <button class="btn-control btn-spy-chamber">👁️ Espiar (<span class="spy-count">0</span>)</button>
+                    </div>
+
+                    <!-- MALFOY -->
+                    <div class="parchment-canvas-box blueprint-chamber" data-wizard="Draco Malfoy" data-id="4">
+                        <div class="grid-lines-overlay"></div>
+                        <div class="chamber-info">
+                            <h4>Sala Precisa</h4>
+                            <p>Draco Malfoy</p>
+                            <div class="footprint-node path-delta">👣<span>Malfoy</span></div>
+                        </div>
+                        <button class="btn-control btn-spy-chamber">👁️ Espiar (<span class="spy-count">0</span>)</button>
+                    </div>
+
+                    <!-- DUMBLEDORE -->
+                    <div class="parchment-canvas-box blueprint-chamber" data-wizard="Alvo Dumbledore" data-id="5">
+                        <div class="grid-lines-overlay"></div>
+                        <div class="chamber-info">
+                            <h4>Torre do Diretor</h4>
+                            <p>Prof. Alvo Dumbledore</p>
+                            <div class="footprint-node path-alpha">👣<span>Dumbledore</span></div>
+                        </div>
+                        <button class="btn-control btn-spy-chamber">👁️ Espiar (<span class="spy-count">0</span>)</button>
+                    </div>
+
+                    <!-- VOLDEMORT -->
+                    <div class="parchment-canvas-box blueprint-chamber" data-wizard="Lord Voldemort" data-id="6">
+                        <div class="grid-lines-overlay"></div>
+                        <div class="chamber-info">
+                            <h4>Casa dos Gaunt</h4>
+                            <p>Lord Voldemort</p>
+                            <div class="footprint-node path-gamma">👣<span>Voldemort</span></div>
+                        </div>
+                        <button class="btn-control btn-spy-chamber">👁️ Espiar (<span class="spy-count">0</span>)</button>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ABA 3: TAPEÇARIA DA FAMÍLIA BLACK -->
+            <div id="section-tapestry" class="section-view">
+                <div class="parchment-canvas-box tapestry">
+                    <div class="tapestry-weave-effect"></div>
+                    <div class="dynasty-layout">
+                        <div class="dynasty-row">
+                            <div class="dynasty-card"><h5>Orion Black</h5><span>Patriarca</span></div>
+                            <div class="dynasty-card"><h5>Walburga Black</h5><span>Matriarca</span></div>
+                        </div>
+                        <div class="dynasty-row">
+                            <div class="dynasty-card burned-out"><h5>Sirius Black</h5><span class="burnt-notice">Banido</span></div>
+                            <div class="dynasty-card"><h5>Regulus Black</h5><span>Herdeiro</span></div>
+                        </div>
+                        <div class="dynasty-row">
+                            <div class="dynasty-card"><h5>Bellatrix Lestrange</h5><span>Sobrinha</span></div>
+                            <div class="dynasty-card burned-out"><h5>Andromeda Tonks</h5><span class="burnt-notice">Carbonizada</span></div>
+                            <div class="dynasty-card"><h5>Narcisa Malfoy</h5><span>Sobrinha</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
